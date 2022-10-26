@@ -1,5 +1,7 @@
 # Реализуйте RLE алгоритм: реализуйте модуль сжатия и восстановления данных.
 
+with open('task_4_text_input.txt', 'r', encoding="utf-8") as f:
+    text = f.read()
 
 def encode(s):
     encoding = ''
@@ -13,12 +15,13 @@ def encode(s):
         i += 1
     return encoding
 
+print(f'Строка до сжатия: {text}')
 
-s = 'ABBBBCCCCCDD'
-print(f'Строка до сжатия: {s}')
-s1 = encode(s)
-print(f'Строка после сжатия: {s1}')
+text_new = encode(text)
+print(f'Строка после сжатия: {text_new}')
 
+with open('task_4_text_output.txt', 'w', encoding="utf-8") as f:
+   f.write("".join(text_new))
 
 def decode(s):
     result = ''
@@ -27,5 +30,6 @@ def decode(s):
             result += s[i+1]*int(s[i])
     return result
 
+print(f'Строка после восстановления данных: {decode(text_new)}')
 
-print(f'Строка после восстановления данных: {decode(s1)}')
+

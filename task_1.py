@@ -1,6 +1,10 @@
 # Напишите программу, удаляющую из текста все слова, содержащие "абв".
 
-text = 'Дядя Семён ехал из города домой. С ним была собака Жучка, Вдруг из леса выскочили волки. Жучка испугалась и прыгнула в сани. У дяди Семёна была хорошая лошадь. Она тоже испугалась и быстро помчалась по дороге. Деревня была близко. Показались огни в окнах. Волки отстали.'
+import re
+
+
+with open('task_1_text_input.txt', 'r', encoding="utf-8") as f:
+    text = f.read()
 
 text_list = text.split()
 letters = ['а', 'б', 'в']
@@ -10,4 +14,6 @@ for i in text_list:
         if j in i:
             my_list.append(i)
 result = [x for x in text_list if x not in my_list]
-print(result)
+
+with open('task_1_text_output.txt', 'w', encoding="utf-8") as f:
+   f.write(" ".join(result))
